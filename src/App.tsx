@@ -1,11 +1,12 @@
-function App() {
+
+const App: React.FC = () => {
+  
   return (
-    <>
-      <div className="bg-pink-500">
-        Hello World
-      </div>
-    </>
-  );
+    <div className='bg-amber-400'>
+      Hello ji kaise ho
+    </div>
+  )
 }
 
-export default App;
+export default App
+
