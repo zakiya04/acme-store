@@ -1,3 +1,5 @@
+import { useState,useEffect } from "react";
+
 export interface Product{
     id: number,
     title: string,
@@ -12,6 +14,7 @@ export interface Product{
 }
 
 export default async function getProducts(): Promise<Product[]>{
+
     const res:Response = await fetch("https://fakestoreapi.com/products");
     const products:Product[] = await res.json();
     return products
