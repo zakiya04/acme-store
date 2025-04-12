@@ -14,7 +14,7 @@ export interface Product{
 }
 
 export default async function getProducts(): Promise<Product[]>{
-
+    const [items,setItems] = useState<Product[]>([])
     const res:Response = await fetch("https://fakestoreapi.com/products");
     const products:Product[] = await res.json();
     return products
