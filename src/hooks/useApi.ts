@@ -13,9 +13,23 @@ export interface Product{
     }
 }
 
-export default async function getProducts(): Promise<Product[]>{
-    const [items,setItems] = useState<Product[]>([])
-    const res:Response = await fetch("https://fakestoreapi.com/products");
-    const products:Product[] = await res.json();
-    return products
+export function useProducts():{
+    products: Product[],
+    getProducts: ()=> Promise <void>
+}{
+    const [products,setProducts] = useState<Product[]>([]);
+
+    async function getProducts():Promise<void>{
+        const res:Response = await fetch("https://fakestoreapi.com/products");
+        const item:Product[] = await res.json();
+        setProducts(item)
+    }
+    useEffect(()=>{
+        getProducts()
+    },[])
+
+    return{
+        products,
+        getProducts,
+    }
 }
