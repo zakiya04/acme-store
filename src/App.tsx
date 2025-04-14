@@ -1,12 +1,10 @@
+import React from "react";
 
 const App: React.FC = () => {
   
   return (
-    <div className='bg-amber-400'>
-      Hello ji kaise ho
-    </div>
+    <h1 className="bg-white">hello</h1>
   )
-}
+};
 
-export default App
-
+export default App;
