@@ -1,20 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Product } from '../hooks/useApi';
+import { ProductItem } from '../hooks/useApi';
 
 type Props = {
-  product : Product
+  product : ProductItem
 }
-const Product: React.FC <Props> = (product) => {
+const Product: React.FC <Props> = ({product}) => {
   return (
-    <div>
-      <Link to='/hi'>
+    <div className='border rounded-2xl border-gray-900 p-4 bg-gray-800' >
+      <Link to='/products/'>
         <div>
-            <img></img>
+            <img src={product.image} className='h-75 w-75'></img>
         </div>
-        <div>
-            <p></p>
-            <button></button>
+        <div className='px-2 py-4 flex items-center justify-center gap-4'>
+            <p className='truncate'>{product.title}</p>
+            <button className='text-white '>${product.price}</button>
         </div>
       </Link>
     </div>
