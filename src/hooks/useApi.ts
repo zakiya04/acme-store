@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 
-export interface Product{
+export interface ProductItem{
     id: number,
     title: string,
     price: number,
@@ -14,14 +14,14 @@ export interface Product{
 }
 
 export function useProducts():{
-    products: Product[],
+    products: ProductItem[],
     getProducts: ()=> Promise <void>
 }{
-    const [products,setProducts] = useState<Product[]>([]);
+    const [products,setProducts] = useState<ProductItem[]>([]);
 
     async function getProducts():Promise<void>{
         const res:Response = await fetch("https://fakestoreapi.com/products");
-        const item:Product[] = await res.json();
+        const item:ProductItem[] = await res.json();
         setProducts(item)
     }
     useEffect(()=>{
