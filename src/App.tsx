@@ -1,6 +1,6 @@
 import React from "react";
 import Products from "./components/products";
-import Details from "./components/productDetails";
+import Details from "./pages/productDetails";
 import { Routes, Route, Link } from "react-router-dom";
 
 const App: React.FC = () => {
