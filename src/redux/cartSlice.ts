@@ -4,15 +4,17 @@ type CartItem = {
   id : string;
   title: string;
   price: number;
-  qty: number
+  qty: number;
 }
 type CartState = {
-    cart: CartItem[]
+    cart: CartItem[],
+    isOpen: boolean
 }
 const products= localStorage.getItem('cart');
 
 const initialState:CartState = {
-    cart: products ? JSON.parse(products) : []
+    cart: products ? JSON.parse(products) : [],
+    isOpen : false
 }
 const cartSlice = createSlice({
     name:'cart',
@@ -44,10 +46,16 @@ const cartSlice = createSlice({
             localStorage.setItem('cart', JSON.stringify(updatedCart));
             return {...state, cart: updatedCart}
         },
+        toggleCart: (state) => {
+            state.isOpen = !state.isOpen;
+        },
+        closeCart: (state) => {
+            state.isOpen = false;
+        }
     }
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
+export const { addToCart, removeFromCart ,toggleCart, closeCart} = cartSlice.actions;
 export default cartSlice.reducer;
 
 
