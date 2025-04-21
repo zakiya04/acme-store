@@ -1,16 +1,21 @@
 import React from 'react'
 import Header from "../components/header";
 import Cart from "../pages/cart";
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 const Home: React.FC = () => {
+  const showCart = useSelector((state:RootState)=> state.cart.isOpen)
   return (
-    <div className='min-h-screen min-w-screen bg-orange-300 flex'>
-      <div className="w-3/5 bg-amber-200 h-[100px]"> 
+    <div className=' min-w-screen flex'>
+      <div className={`${showCart ? 'w-3/5':'w-full'} h-[100px]`}> 
         <Header />
       </div>
-      <div className="w-2/5 bg-pink-300 h-[100px] flex items-center justify-center"> 
+      {showCart &&(
+        <div className="w-2/5 h-[600px] flex items-center justify-center "> 
         <Cart />
       </div>
+      )}
     </div>
   )
 }
