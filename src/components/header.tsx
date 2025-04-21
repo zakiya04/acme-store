@@ -2,10 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { RiShoppingCart2Fill } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { toggleCart } from "../redux/cartSlice";
 
 const Header: React.FC = () => {
+  const dispatch:AppDispatch = useDispatch();
+  const openCart = ()=>{
+    dispatch(toggleCart())
+  }
   return (
-    <div className="flex items-center justify-between pb-4 bg-yellow-300">
+    <div className="flex items-center justify-between pb-4 ">
       <div className="w-1/3 flex items-center justify-around p-4">
         <Link to="/" className="flex items-center justify-center">
           <div className="w-[40px] h-[40px] mr-2 border-[0.5px] border-gray-600 rounded-md">
@@ -33,7 +40,7 @@ const Header: React.FC = () => {
         ></input>
       </div>
       <div className="w-1/3 flex items-center justify-end p-4 cursor-pointer ">
-        <div className="h-[40px] border border-gray-700 w-[40px] rounded-sm flex items-center justify-center">
+        <div className="h-[40px] border border-gray-700 w-[40px] rounded-sm flex items-center justify-center" onClick={openCart}>
           <RiShoppingCart2Fill className="text-gray-500 w-[50%] h-[50%] hover:w-[54%] hover:h-[56%] " />
         </div>
         <div></div>
