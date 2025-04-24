@@ -12,7 +12,7 @@ const Header: React.FC = () => {
     dispatch(toggleCart())
   }
   return (
-    <div className="flex items-center justify-between pb-4 ">
+    <div className="flex items-center justify-between pb-4 h-[88px] w-full">
       <div className="w-1/3 flex items-center justify-around p-4">
         <Link to="/" className="flex items-center justify-center">
           <div className="w-[40px] h-[40px] mr-2 border-[0.5px] border-gray-600 rounded-md">
