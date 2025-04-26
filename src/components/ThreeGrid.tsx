@@ -3,9 +3,9 @@ import { useProducts } from "../hooks/useApi";
 import ProductCart from "./ProductCart";
 
 const ThreeGrid: React.FC = () => {
-  const { products } = useProducts();
+  const { products ,loading} = useProducts();
   const top3 = products.slice(0, 3);
-  if (top3.length === 0) {
+  if (loading) {
     return <div className="text-white">Loading...</div>; 
   }
   return (
@@ -20,5 +20,4 @@ const ThreeGrid: React.FC = () => {
     </div>
   );
 };
-
 export default ThreeGrid
