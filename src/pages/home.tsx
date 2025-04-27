@@ -3,6 +3,7 @@ import Header from "../components/header";
 import Cart from "../pages/cart";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
+import Carousal from "../components/ImageCarousal";
 import ThreeGrid from "../components/ThreeGrid";
 
 const Home: React.FC = () => {
@@ -12,6 +13,7 @@ const Home: React.FC = () => {
       <Header />
       <Cart />
       <ThreeGrid />
+      <Carousal />
     </>
   );
 };
