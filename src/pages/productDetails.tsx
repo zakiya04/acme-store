@@ -10,7 +10,7 @@ const Details: React.FC = () => {
 
   const { state } = useLocation();
   const product = state?.product;
-
+  
   function handleClick(){
     dispatch(addToCart(product))
   }
