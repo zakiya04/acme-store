@@ -11,7 +11,7 @@ type CartState = {
     isOpen: boolean
 }
 const products= localStorage.getItem('cart');
-
+console.log(products)
 const initialState:CartState = {
     cart: products ? JSON.parse(products) : [],
     isOpen : false
@@ -20,8 +20,9 @@ const cartSlice = createSlice({
     name:'cart',
     initialState,
     reducers:{
-        addToCart: (state,action: PayloadAction<CartItem>) => {
+        addToCart: (state,action:PayloadAction<CartItem>) => {
             const product = action.payload
+    
             let updatedCart: CartItem[]
             const exist = state.cart.find(x => x.product.id === product.product.id);
             if(exist){
