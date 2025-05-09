@@ -15,14 +15,17 @@ export interface ProductItem{
 
 export function useProducts():{
     products: ProductItem[],
-    getProducts: ()=> Promise <void>
+    getProducts: ()=> Promise <void>,
+    loading: boolean
 }{
     const [products,setProducts] = useState<ProductItem[]>([]);
+    const [loading,setLoading] = useState<boolean>(true)
 
     async function getProducts():Promise<void>{
-        const res:Response = await fetch("https://fakestoreapi.com/products");
+        const res:Response = await fetch('https://fakestoreapi.com/products');
         const item:ProductItem[] = await res.json();
         setProducts(item)
+        setLoading(false)
     }
     useEffect(()=>{
         getProducts()
@@ -31,5 +34,6 @@ export function useProducts():{
     return{
         products,
         getProducts,
+        loading,
     }
 }
